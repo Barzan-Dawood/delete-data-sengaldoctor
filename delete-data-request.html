@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>طلب حذف البيانات - دليل شنكال الصحي | Delete Data Request - Sengal Health Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .lang-switcher {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .lang-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .lang-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .lang-btn.active {
+            background: white;
+            color: #667eea;
+            border-color: white;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 40px 30px;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+        }
+        
+        .section h2 {
+            color: #667eea;
+            font-size: 22px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .section h3 {
+            color: #764ba2;
+            font-size: 18px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .section p, .section li {
+            color: #333;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        
+        .section ul {
+            margin-right: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .section li {
+            margin-bottom: 8px;
+        }
+        
+        .highlight-box {
+            background: #f8f9fa;
+            border-right: 4px solid #667eea;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .contact-info {
+            background: #e8f4f8;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        
+        .contact-info h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+        
+        .contact-info a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+        
+        .steps {
+            background: #fff5f5;
+            border-right: 4px solid #ff6b6b;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .steps ol {
+            margin-right: 20px;
+        }
+        
+        .steps li {
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+        
+        .footer {
+            background: #f8f9fa;
+            padding: 20px 30px;
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        /* English styles */
+        body[dir="ltr"] .section ul {
+            margin-left: 20px;
+            margin-right: 0;
+        }
+        
+        body[dir="ltr"] .steps ol {
+            margin-left: 20px;
+            margin-right: 0;
+        }
+        
+        body[dir="ltr"] .highlight-box {
+            border-left: 4px solid #667eea;
+            border-right: none;
+        }
+        
+        body[dir="ltr"] .steps {
+            border-left: 4px solid #ff6b6b;
+            border-right: none;
+        }
+        
+        body[dir="ltr"] .lang-switcher {
+            left: auto;
+            right: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 24px;
+            }
+            
+            .content {
+                padding: 25px 20px;
+            }
+            
+            .lang-switcher {
+                position: static;
+                justify-content: center;
+                margin-bottom: 20px;
+            }
+        }
+        
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body dir="rtl">
+    <div class="container">
+        <div class="header">
+            <div class="lang-switcher">
+                <button class="lang-btn active" onclick="switchLang('ar')">العربية</button>
+                <button class="lang-btn" onclick="switchLang('en')">English</button>
+            </div>
+            <h1 id="title-ar">🗑️ طلب حذف البيانات</h1>
+            <h1 id="title-en" class="hidden">🗑️ Delete Data Request</h1>
+            <p id="subtitle-ar">دليل شنكال الصحي - Sengal Health Guide</p>
+            <p id="subtitle-en" class="hidden">Sengal Health Guide - دليل شنكال الصحي</p>
+            <p style="margin-top: 10px; font-size: 14px;" id="dev-ar">تطوير: Barzan Dawood</p>
+            <p style="margin-top: 10px; font-size: 14px;" id="dev-en" class="hidden">Developed by: Barzan Dawood</p>
+        </div>
+        
+        <div class="content">
+            <!-- Arabic Content -->
+            <div id="content-ar">
+                <div class="section">
+                    <h2>📋 نظرة عامة</h2>
+                    <p>
+                        نحن في <strong>دليل شنكال الصحي</strong> نولي خصوصيتك وحقك في التحكم ببياناتك أهمية كبيرة. 
+                        يمكنك طلب حذف بياناتك في أي وقت من خلال الطرق الموضحة أدناه.
+                    </p>
+                </div>
+                
+                <div class="section">
+                    <h2>📱 طريقة 1: حذف البيانات من داخل التطبيق</h2>
+                    <div class="steps">
+                        <ol>
+                            <li>افتح تطبيق <strong>دليل شنكال الصحي</strong></li>
+                            <li>انتقل إلى صفحة <strong>الإعدادات (Settings)</strong></li>
+                            <li>اضغط على زر <strong>"حذف بياناتي" (Delete My Data)</strong></li>
+                            <li>اقرأ التحذير واضغط على <strong>"Delete"</strong> للتأكيد</li>
+                            <li>سيتم حذف جميع البيانات المحلية المخزنة في التطبيق</li>
+                        </ol>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h2>📧 طريقة 2: طلب حذف البيانات عبر البريد الإلكتروني</h2>
+                    <div class="highlight-box">
+                        <p><strong>إذا كنت تريد حذف بياناتك أو لديك أي استفسار، يرجى التواصل معنا عبر:</strong></p>
+                    </div>
+                    
+                    <div class="contact-info">
+                        <h3>📬 معلومات التواصل:</h3>
+                        <p><strong>البريد الإلكتروني 1:</strong> <a href="mailto:info@barzandawood.com">info@barzandawood.com</a></p>
+                        <p><strong>البريد الإلكتروني 2:</strong> <a href="mailto:barzan.dawood.dev@gmail.com">barzan.dawood.dev@gmail.com</a></p>
+                        <p><strong>الموقع الإلكتروني:</strong> <a href="https://barzandawood.com" target="_blank">barzandawood.com</a></p>
+                    </div>
+                    
+                    <p style="margin-top: 20px;">
+                        <strong>يرجى إرسال رسالة تحتوي على:</strong>
+                    </p>
+                    <ul>
+                        <li>اسمك (اختياري)</li>
+                        <li>طلب حذف البيانات</li>
+                        <li>نوع الجهاز (Android/iOS) إن أمكن</li>
+                    </ul>
+                </div>
+                
+                <div class="section">
+                    <h2>📊 أنواع البيانات التي يتم حذفها</h2>
+                    <div class="highlight-box">
+                        <h3>✅ البيانات المحلية (يتم حذفها):</h3>
+                        <ul>
+                            <li><strong>الكاش المحلي:</strong> جميع البيانات المخزنة مؤقتاً</li>
+                            <li><strong>إعدادات التطبيق:</strong> اللغة، الوضع (فاتح/داكن)، وغيرها</li>
+                            <li><strong>تفضيلات الإشعارات:</strong> إعدادات الإشعارات المحفوظة</li>
+                            <li><strong>FCM Token:</strong> رمز الإشعارات المحلي</li>
+                            <li><strong>بيانات المراقبة:</strong> بيانات مراقبة التطبيق المحلية</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="highlight-box" style="background: #fff5f5; border-right-color: #ff6b6b;">
+                        <h3>⚠️ بيانات Firebase (مجهولة الهوية):</h3>
+                        <p>
+                            <strong>Firebase Analytics</strong> و <strong>Firebase Crashlytics</strong> تجمع بيانات مجهولة الهوية 
+                            (لا يمكن ربطها بمستخدم محدد). هذه البيانات:
+                        </p>
+                        <ul>
+                            <li>مجهولة الهوية تماماً</li>
+                            <li>تُحذف تلقائياً من Firebase بعد فترة محددة (14 شهر للـ Analytics، 90 يوم للـ Crashlytics)</li>
+                            <li>لا يمكن حذفها يدوياً لأنها لا تحتوي على معلومات تعريفية</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h2>⏱️ فترة الاحتفاظ بالبيانات</h2>
+                    <ul>
+                        <li><strong>البيانات المحلية:</strong> تُحذف فوراً عند استخدام ميزة "حذف بياناتي"</li>
+                        <li><strong>Firebase Analytics:</strong> تُحذف تلقائياً بعد 14 شهر</li>
+                        <li><strong>Firebase Crashlytics:</strong> تُحذف تلقائياً بعد 90 يوم</li>
+                    </ul>
+                </div>
+                
+                <div class="section">
+                    <h2>🔒 الأمان والخصوصية</h2>
+                    <p>
+                        جميع البيانات المحلية يتم حذفها بشكل آمن ولا يمكن استعادتها. 
+                        لا نحتفظ بأي نسخ احتياطية من بيانات المستخدمين المحلية.
+                    </p>
+                </div>
+                
+                <div class="section">
+                    <h2>❓ أسئلة شائعة</h2>
+                    <h3>هل يمكن استعادة البيانات بعد الحذف؟</h3>
+                    <p>لا، عملية الحذف نهائية ولا يمكن استعادة البيانات المحلية المحذوفة.</p>
+                    
+                    <h3>هل يجب علي إنشاء حساب لحذف البيانات؟</h3>
+                    <p>لا، تطبيقنا لا يتطلب إنشاء حساب. يمكنك حذف البيانات مباشرة من الإعدادات.</p>
+                    
+                    <h3>ماذا عن البيانات في Firebase؟</h3>
+                    <p>بيانات Firebase مجهولة الهوية وتُحذف تلقائياً بعد الفترات المحددة أعلاه.</p>
+                </div>
+            </div>
+            
+            <!-- English Content -->
+            <div id="content-en" class="hidden">
+                <div class="section">
+                    <h2>📋 Overview</h2>
+                    <p>
+                        At <strong>Sengal Health Guide</strong>, we value your privacy and your right to control your data. 
+                        You can request to delete your data at any time through the methods outlined below.
+                    </p>
+                </div>
+                
+                <div class="section">
+                    <h2>📱 Method 1: Delete Data from Within the App</h2>
+                    <div class="steps">
+                        <ol>
+                            <li>Open the <strong>Sengal Health Guide</strong> app</li>
+                            <li>Navigate to the <strong>Settings</strong> page</li>
+                            <li>Tap on the <strong>"Delete My Data"</strong> button</li>
+                            <li>Read the warning and tap <strong>"Delete"</strong> to confirm</li>
+                            <li>All locally stored data in the app will be deleted</li>
+                        </ol>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h2>📧 Method 2: Request Data Deletion via Email</h2>
+                    <div class="highlight-box">
+                        <p><strong>If you want to delete your data or have any inquiries, please contact us via:</strong></p>
+                    </div>
+                    
+                    <div class="contact-info">
+                        <h3>📬 Contact Information:</h3>
+                        <p><strong>Email 1:</strong> <a href="mailto:info@barzandawood.com">info@barzandawood.com</a></p>
+                        <p><strong>Email 2:</strong> <a href="mailto:barzan.dawood.dev@gmail.com">barzan.dawood.dev@gmail.com</a></p>
+                        <p><strong>Website:</strong> <a href="https://barzandawood.com" target="_blank">barzandawood.com</a></p>
+                    </div>
+                    
+                    <p style="margin-top: 20px;">
+                        <strong>Please send a message containing:</strong>
+                    </p>
+                    <ul>
+                        <li>Your name (optional)</li>
+                        <li>Data deletion request</li>
+                        <li>Device type (Android/iOS) if possible</li>
+                    </ul>
+                </div>
+                
+                <div class="section">
+                    <h2>📊 Types of Data That Will Be Deleted</h2>
+                    <div class="highlight-box">
+                        <h3>✅ Local Data (Will be deleted):</h3>
+                        <ul>
+                            <li><strong>Local Cache:</strong> All temporarily stored data</li>
+                            <li><strong>App Settings:</strong> Language, theme (light/dark), and others</li>
+                            <li><strong>Notification Preferences:</strong> Saved notification settings</li>
+                            <li><strong>FCM Token:</strong> Local notification token</li>
+                            <li><strong>Monitoring Data:</strong> Local app monitoring data</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="highlight-box" style="background: #fff5f5; border-left-color: #ff6b6b; border-right: none;">
+                        <h3>⚠️ Firebase Data (Anonymous):</h3>
+                        <p>
+                            <strong>Firebase Analytics</strong> and <strong>Firebase Crashlytics</strong> collect anonymous data 
+                            (cannot be linked to a specific user). This data:
+                        </p>
+                        <ul>
+                            <li>Is completely anonymous</li>
+                            <li>Is automatically deleted from Firebase after a specified period (14 months for Analytics, 90 days for Crashlytics)</li>
+                            <li>Cannot be manually deleted as it contains no identifying information</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h2>⏱️ Data Retention Period</h2>
+                    <ul>
+                        <li><strong>Local Data:</strong> Deleted immediately when using the "Delete My Data" feature</li>
+                        <li><strong>Firebase Analytics:</strong> Automatically deleted after 14 months</li>
+                        <li><strong>Firebase Crashlytics:</strong> Automatically deleted after 90 days</li>
+                    </ul>
+                </div>
+                
+                <div class="section">
+                    <h2>🔒 Security and Privacy</h2>
+                    <p>
+                        All local data is securely deleted and cannot be recovered. 
+                        We do not keep any backups of users' local data.
+                    </p>
+                </div>
+                
+                <div class="section">
+                    <h2>❓ Frequently Asked Questions</h2>
+                    <h3>Can data be recovered after deletion?</h3>
+                    <p>No, the deletion process is permanent and deleted local data cannot be recovered.</p>
+                    
+                    <h3>Do I need to create an account to delete data?</h3>
+                    <p>No, our app does not require account creation. You can delete data directly from settings.</p>
+                    
+                    <h3>What about Firebase data?</h3>
+                    <p>Firebase data is anonymous and is automatically deleted after the periods specified above.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p id="footer-ar">© 2024 دليل شنكال الصحي - جميع الحقوق محفوظة</p>
+            <p id="footer-en" class="hidden">© 2024 Sengal Health Guide - All Rights Reserved</p>
+            <p style="margin-top: 10px;">
+                <a href="https://barzan-dawood.github.io/privacy-policy/privacy-policy.html" style="color: #667eea; text-decoration: none;" id="privacy-link-ar">سياسة الخصوصية</a>
+                <a href="https://barzan-dawood.github.io/privacy-policy/privacy-policy.html" style="color: #667eea; text-decoration: none;" id="privacy-link-en" class="hidden">Privacy Policy</a>
+                <span> | </span>
+                <a href="https://barzandawood.com" style="color: #667eea; text-decoration: none;" id="website-link-ar">الموقع الإلكتروني</a>
+                <a href="https://barzandawood.com" style="color: #667eea; text-decoration: none;" id="website-link-en" class="hidden">Website</a>
+            </p>
+        </div>
+    </div>
+    
+    <script>
+        function switchLang(lang) {
+            const body = document.body;
+            const arContent = document.getElementById('content-ar');
+            const enContent = document.getElementById('content-en');
+            const arTitle = document.getElementById('title-ar');
+            const enTitle = document.getElementById('title-en');
+            const arSubtitle = document.getElementById('subtitle-ar');
+            const enSubtitle = document.getElementById('subtitle-en');
+            const arDev = document.getElementById('dev-ar');
+            const enDev = document.getElementById('dev-en');
+            const arFooter = document.getElementById('footer-ar');
+            const enFooter = document.getElementById('footer-en');
+            const arPrivacyLink = document.getElementById('privacy-link-ar');
+            const enPrivacyLink = document.getElementById('privacy-link-en');
+            const arWebsiteLink = document.getElementById('website-link-ar');
+            const enWebsiteLink = document.getElementById('website-link-en');
+            const langButtons = document.querySelectorAll('.lang-btn');
+            
+            if (lang === 'ar') {
+                body.setAttribute('dir', 'rtl');
+                body.setAttribute('lang', 'ar');
+                arContent.classList.remove('hidden');
+                enContent.classList.add('hidden');
+                arTitle.classList.remove('hidden');
+                enTitle.classList.add('hidden');
+                arSubtitle.classList.remove('hidden');
+                enSubtitle.classList.add('hidden');
+                arDev.classList.remove('hidden');
+                enDev.classList.add('hidden');
+                arFooter.classList.remove('hidden');
+                enFooter.classList.add('hidden');
+                arPrivacyLink.classList.remove('hidden');
+                enPrivacyLink.classList.add('hidden');
+                arWebsiteLink.classList.remove('hidden');
+                enWebsiteLink.classList.add('hidden');
+                langButtons[0].classList.add('active');
+                langButtons[1].classList.remove('active');
+            } else {
+                body.setAttribute('dir', 'ltr');
+                body.setAttribute('lang', 'en');
+                arContent.classList.add('hidden');
+                enContent.classList.remove('hidden');
+                arTitle.classList.add('hidden');
+                enTitle.classList.remove('hidden');
+                arSubtitle.classList.add('hidden');
+                enSubtitle.classList.remove('hidden');
+                arDev.classList.add('hidden');
+                enDev.classList.remove('hidden');
+                arFooter.classList.add('hidden');
+                enFooter.classList.remove('hidden');
+                arPrivacyLink.classList.add('hidden');
+                enPrivacyLink.classList.remove('hidden');
+                arWebsiteLink.classList.add('hidden');
+                enWebsiteLink.classList.remove('hidden');
+                langButtons[0].classList.remove('active');
+                langButtons[1].classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>
